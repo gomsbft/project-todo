@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script defer src="calendar.js"></script>
+  <script defer src="todo.js"></script>
+  <title>TODO LIST</title>
+</head>
+<body>
+  <div class="todo-wrap">
+    <header class="maintop">
+      
+      <section class="top-Btn">
+        <button class="lfet" onclick="prevMonth()">
+          <span class="material-symbols-outlined">arrow_back_ios</span>
+        </button>
+        <h1 class="mon"></h1>
+        <button class="right" onclick="nextMonth()">
+          <span class="material-symbols-outlined">arrow_forward_ios</span>
+        </button>
+      </section>
+    </header>
+    <main>
+      <!-- 달력  -->
+      <section class="days">
+        <div class="day">SUN</div>
+        <div class="day">MON</div>
+        <div class="day">TUE</div>
+        <div class="day">WED</div>
+        <div class="day">THU</div>
+        <div class="day">FRI</div>
+        <div class="day">SAT</div>
+      </section>
+      <div class="dates"></div>
+      <!-- todo -->
+      <section class="todo-wrap">
+        <div class="todo-box">
+          <div class="todo-input-box">
+            <input type="text" class="todo-input" placeholder="할 일 입력">
+            <button class="add-btn">추가하기</button>
+          </div>
+          <ul class="todo-list">
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer>
+  
+    </footer>
+  </div>
+</body>
+</html>
