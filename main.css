@@ -53,7 +53,7 @@ table {
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin-top: 50px;
   width: 100vw;
   height: 100vh;
 }
@@ -61,7 +61,7 @@ body {
 .todo-wrap {
   border: 1px solid black;
   width: 400px;
-  height: 900px;
+  height: 620px;
   background-color: beige;
   border-radius: 10px;
 }
@@ -92,6 +92,7 @@ h1 {
   background-color: transparent;
   border: none;
   padding-right: 5px;
+  cursor: pointer;
 }
 
 .top-Btn > button > span {
@@ -164,7 +165,7 @@ h1 {
 
 .todo-wrapper {
   justify-content: center;
-  min-width: 600px;
+  height: auto;
 }
 
 .todo-box {
@@ -206,6 +207,7 @@ button {
 
 .add-btn:hover {
   color: lightcoral;
+  cursor: pointer;
 }
 
 .todo-item {
@@ -230,11 +232,6 @@ button {
   text-align: center;
 }
 
-.todo-item.checked .checkbox{
-  border: 2px solid darkgray;
-  color: green;
-}
-
 .todo {
   font-size: 20px;
   padding: 0 10px;
@@ -250,16 +247,6 @@ button {
   cursor: pointer;
 }
 
-
-.edit-input {
-  position: absolute;
-  left: -5px;
-  top: -5px;
-  width: 380px;
-  height: 40px;
-  border-radius: 10px;
-  margin: 0;
-}
 
 .updateBtn {
   color: lightcoral;
