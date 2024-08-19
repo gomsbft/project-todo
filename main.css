@@ -275,7 +275,7 @@ button {
 }
 
 .todo-list li.complete .checkbox::after {
-  content: " ";
+  content: "";
   display: block;
   width: 5px;
   height: 10px;

@@ -77,7 +77,6 @@ const paintTodos = () => {
 
         const checkboxEl = document.createElement('button');
         checkboxEl.classList.add('checkbox');
-        checkboxEl.addEventListener('click', () => completeTodo(todo.id))
 
         const todoEl = document.createElement('div');
         todoEl.classList.add('todo');
