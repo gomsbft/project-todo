@@ -267,6 +267,7 @@ button {
   width: 20px;
   height: 30px;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .todo-list li.complete {
@@ -282,4 +283,33 @@ button {
   transform: translate(-2px, -2px) rotate(45deg);
   border-right: 2px solid #f1b116;
   border-bottom: 2px solid #f1b116;
+}
+
+.change-text {
+  position: absolute;
+  left: -5px;
+  top: -5px;
+  width: 380px;
+  height: 40px;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.off {
+  display: none;
+}
+
+.change-text_ok {
+  z-index: 5;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  width: 40px;
+  height: 20px;
+  border-radius: 3px;
+  color: lightgreen;
+}
+
+.change-text_ok:hover {
+  color: lightcoral;
 }

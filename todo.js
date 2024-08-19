@@ -1,6 +1,9 @@
 const todoInputEl = document.querySelector(".todo-input");
 const todoListEl = document.querySelector(".todo-list");
 const addBtn = document.querySelector(".add-btn")
+const changeText = document.querySelector(".change-text");
+const changeTextOk = document.querySelector("change-text_ok");
+
 
 let todos = [];
 let id = 0;
@@ -20,12 +23,6 @@ const appendTodos = (text) => {
   paintTodos();
 }
 
-const completeTodo = (todoId) => {
-  const newTodos = getAllTodos().map(todo => todo.id === todoId ? {...todo,  isCompleted: !todo.isCompleted} : todo )
-  setTodos(newTodos);
-  paintTodos();
-}
-
 const deleteTodo = (todoId) => {
   console.log(todoId);
   const newTodos = getAllTodos().filter(todo => todo.id !== todoId );
@@ -33,43 +30,14 @@ const deleteTodo = (todoId) => {
   paintTodos()
 }
 
-const updateTodo = (text, todoId) => {
-  const currentTodos = getAllTodos();
-  const newTodos = currentTodos.map(todo => todo.id === todoId ? ({...todo, content: text}) : todo);
-  setTodos(newTodos);
-  paintTodos();
-}
 
-const onclickTodo = (e, todoId) => {
-  const todoEl = e.target;
-  const inputText = e.target.innerText;
-  const todoItemEl = todoEl.parentNode;
-  const inputEl = document.createElement('input');
-  inputEl.value = inputText;
-  inputEl.classList.add('edit-input');
-  inputEl.addEventListener('keypress', (e) => {
-    if(e.key === 'Enter') {
-      updateTodo(e.target.value, todoId);
-      document.body.removeEventListener('click', onClickBody );
-    }
-  })
 
-  const onClickBody = (e) => {
-    if(e.target !== inputEl)  {
-      todoItemEl.removeChild(inputEl);
-      document.body.removeEventListener('click', onClickBody );
-    }
-  }
-
-  document.body.addEventListener('click', onClickBody)
-  todoItemEl.appendChild(inputEl);
-}
 
 const paintTodos = () => {
     todoListEl.innerHTML = ''; //todoListElem 요소 안의 HTML 초기화
-	const allTodos = getAllTodos() // todos 배열 가져오기
+	  const allList = getAllTodos() // todos 배열 가져오기
 
-    allTodos.forEach(todo => { 
+    allList.forEach(todo => { 
         const todoItemEl = document.createElement("li");
         todoItemEl.classList.add("todo-item");
 
@@ -80,20 +48,42 @@ const paintTodos = () => {
 
         const todoEl = document.createElement('div');
         todoEl.classList.add('todo');
-        todoEl.addEventListener('dblclick', (e) => onclickTodo(e, todo.id))
         todoEl.innerText = todo.content;
 
         const deleteBtn = document.createElement("button");
         deleteBtn.classList.add('delBtn');
         deleteBtn.addEventListener('click', () =>  deleteTodo(todo.id))
         deleteBtn.innerHTML = `<span class="material-symbols-outlined">
-          close</span>`;
+          delete</span>`;
 
         const updateBtn = document.createElement("button");
         updateBtn.classList.add("updateBtn");
-        updateBtn.addEventListener('click', () =>  onclickTodo())
         updateBtn.innerHTML = `<span class="material-symbols-outlined">
           edit</span>`;
+        updateBtn.addEventListener("click", (e) => {
+          changeText.classList.remove("off");
+          changeTextOk.classList.remove("off");
+        })
+
+        const changeText = document.createElement("input");
+        changeText.classList.add("change-text");
+        changeText.classList.add("off");
+
+        // 확인버튼 누르면 다시 off 
+        const changeTextOk = document.createElement("button");
+        changeTextOk.classList.add("change-text_ok");
+        changeTextOk.classList.add("off");
+        changeTextOk.innerHTML= "확인"
+        changeTextOk.addEventListener("click", (e) => {
+          if(todoEl.value === changeText.value || changeText.value === "") {
+            changeText.classList.add("off");
+            changeTextOk.classList.add("off");
+          }else {
+            todoEl.value = changeText.value;
+            changeText.classList.add("off");
+            changeTextOk.classList.add("off");
+          }
+        })
 
         checkboxEl.addEventListener('click', () => { // 체크박스 클릭시 완료 표시
           todoItemEl.classList.toggle('complete');
@@ -103,7 +93,9 @@ const paintTodos = () => {
         todoItemEl.appendChild(todoEl);
         todoItemEl.appendChild(deleteBtn);
         todoItemEl.appendChild(updateBtn);
+        todoItemEl.appendChild(changeText);
         todoListEl.appendChild(todoItemEl);
+        todoItemEl.appendChild(changeTextOk);
         
     })
 }
