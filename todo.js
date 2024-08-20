@@ -75,6 +75,7 @@ const paintTodos = () => {
       changeTextOk.classList.remove("off");
     })
 
+    // 수정 완료 버튼
     const changeText = document.createElement("input");
     changeText.classList.add("change-text");
     changeText.classList.add("off");
@@ -85,11 +86,11 @@ const paintTodos = () => {
     changeTextOk.classList.add("off");
     changeTextOk.innerHTML= "확인"
     changeTextOk.addEventListener("click", (e) => {
-      if(todoEl.value === changeText.value || changeText.value === "") {
+      if(changeText.value == "" || changeText.value == todo.content) {
         changeText.classList.add("off");
         changeTextOk.classList.add("off");
       }else {
-        todoEl.value = changeText.value;
+        todoEl.innerText = changeText.value;
         changeText.classList.add("off");
         changeTextOk.classList.add("off");
       }
