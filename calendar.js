@@ -42,7 +42,7 @@ const rederCalendar = () => {
 
   dates.forEach((date, i) => {
     const condition = i >= firstDate && i < lastDate + 1 ? "this" : "other";
-    dates[i] = `<button class="date" onclick="selectDay"><span class="${condition}">${date}</span></button>`
+    dates[i] = `<button class="date"><span class="${condition}">${date}</span></button>`
   })
 
   document.querySelector(".dates").innerHTML = dates.join("");

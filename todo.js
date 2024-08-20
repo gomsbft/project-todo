@@ -86,11 +86,15 @@ const paintTodos = () => {
     changeTextOk.classList.add("off");
     changeTextOk.innerHTML= "확인"
     changeTextOk.addEventListener("click", (e) => {
+      // 수정 입력창 비어있으면 혹은 지금 내용과 같을 경우
       if(changeText.value == "" || changeText.value == todo.content) {
         changeText.classList.add("off");
         changeTextOk.classList.add("off");
       }else {
+        // 수정 
         todoEl.innerText = changeText.value;
+        // 수정 창 초기화
+        changeText.value = "";
         changeText.classList.add("off");
         changeTextOk.classList.add("off");
       }
