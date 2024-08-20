@@ -100,8 +100,11 @@ h1 {
 }
 
 .days {
+  margin-top: -20px;
   display: flex;
   justify-content: space-around;
+  background-color: #FFE7EF;
+  padding-top: 30px;
 }
 
 .day {
