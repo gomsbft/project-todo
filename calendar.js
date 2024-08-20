@@ -43,8 +43,14 @@ const rederCalendar = () => {
 
   dates.forEach((date, i) => {
     const condition = i >= firstDate && i < lastDate + 1 ? "this" : "other";
-    dates[i] = `<button class="date"><span class="${condition}">${date}</span></button>`
+    dates[i] = `<button class="date" data-index="${i}"><span class="${condition}">${date}</span></button>`
   })
+
+  // data를 button 마다 넣는 것은 성공
+  // 가져다가 사용하는 방법이 어려움...
+  //document.querySelector(".date").addEventListener("click", () => {
+    //todo-wrap에 클래스 .off를 주고 클릭을 하면 .off 삭제 하면서 해당 data로 연결...?
+  //})
 
   document.querySelector(".dates").innerHTML = dates.join("");
 
@@ -57,6 +63,8 @@ const rederCalendar = () => {
       }
     }
   }
+
+
 }
 
 
