@@ -1,9 +1,8 @@
 const todoInputEl = document.querySelector(".todo-input");
 const todoListEl = document.querySelector(".todo-list");
-const addBtn = document.querySelector(".add-btn")
+const addBtn = document.querySelector(".add-btn");
 const changeText = document.querySelector(".change-text");
 const changeTextOk = document.querySelector("change-text_ok");
-
 
 let todos = [];
 let id = 0;
@@ -99,7 +98,6 @@ const paintTodos = () => {
         changeTextOk.classList.add("off");
       }
     })
-
 
     todoItemEl.appendChild(checkboxEl);
     todoItemEl.appendChild(todoEl);
